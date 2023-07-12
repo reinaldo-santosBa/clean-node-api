@@ -4,8 +4,8 @@
   "description": "application developed through rodrigo manguinho's udemy course on api with node applying tdd and clean architecture link https://www.udemy.com/course/tdd-com-mango/",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test:staged": "jest"
+    "test": "jest --pasWithNoTests",
+    "test:staged": "jest --pasWithNoTests"
   },
   "keywords": [],
   "author": "Reinaldo santos",
