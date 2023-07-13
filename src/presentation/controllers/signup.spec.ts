@@ -1,8 +1,6 @@
 import { SignUpController } from './signUp';
-import { MissingParamError } from '../erros/missingParamsErrors';
-import { InvalidParamError } from '../erros/invalidParamError';
 import { EmailValidator } from '../protocols/email-validator';
-import { ServerError } from '../erros/serverError';
+import { InvalidParamError, MissingParamError, ServerError } from '../erros';
 
 interface SutTypes {
 	sut: SignUpController;
@@ -130,7 +128,7 @@ describe('SignUp Controller', () => {
 		class EmailValidatorStub implements EmailValidator {
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			isValid(email: string): boolean {
-				return true;
+				throw new Error();
 			}
 		}
 		const emailValidatorStub = new EmailValidatorStub();
@@ -141,7 +139,6 @@ describe('SignUp Controller', () => {
 				email: 'any_email@gmail.com',
 				password: 'any_password',
 				passwordConfirmation: 'any_password'
-
 			}
 		};
 		const httpResponse = sut.handle(httpRequest);
